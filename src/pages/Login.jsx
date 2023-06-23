@@ -20,7 +20,6 @@ export default function Login() {
         email: emailElem.current.value,
         password: passElem.current.value,
       });
-      console.log(result)
       localStorage.setItem("auth-token", result.data.token);
       localStorage.setItem("uname", result.data.username);
       toast.success("Login Successfull");
