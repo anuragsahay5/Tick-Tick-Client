@@ -100,7 +100,6 @@ export default function Todo() {
           </form>
           <div className="todo-lists">
             {todo_data.map((val, i, arr) => {
-              console.log(arr);
               return (
                 <Todolist
                   val={val}
