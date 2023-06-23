@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+h1 {
+  font-family: sans-serif;
+  padding: 10px 0;
+  text-align: center;
+  color: #590c69;
+  text-shadow: 1px 1px 1px;
+}
+.todo{
+  background-color: #590c69;
+}
+
+.todo-frame {
+  width: min(500px , 90vw);
+  background-color: white;
+  border-radius: 0 0 10px 10px;
+  margin: 0 auto;
+}
+
+.todo-input {
+  width: 400px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.todo-input input {
+  width: 330px;
+  margin: 0 5px 0 0;
+  padding: 5px 0;
+  outline: none;
+  font-size: medium;
+  border: 1px solid rgba(128, 128, 128, 0.793);
+  border-radius: 1px;
+  text-indent: 5px;
+  font-family: sans-serif;
+  caret-color: rgba(62, 61, 61, 0.793);
+}
+.todo-input button {
+  border: none;
+  padding: 6px;
+  background-color: #710a86;
+  color: white;
+  border-radius: 1px;
+}
+.todo-input button:active {
+  background-color: #710a86df;
+}
+
+.todo-lists {
+  width: 400px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  max-height: 60vh;
+  overflow: scroll;
+}
+.todo-lists::-webkit-scrollbar {
+  display: none;
+}
+
+.todo-list {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  border-top: 2px solid rgba(128, 128, 128, 0.3);
+  font-family: sans-serif;
+}
+.checkbox {
+  height: 20px;
+  width: 20px;
+  margin: 0 10px 0 0;
+  accent-color: #0a832a;
+}
+
+.todo-description {
+  font-size: large;
+}
+
+.delete-todo {
+  background-color: rgba(128, 128, 128, 0.493);
+  border-radius: 100px;
+  padding: 3px;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 0px;
+}
+.delete-todo:active {
+  background-color: rgba(128, 128, 128, 0.293);
+}
+.navbar {
+  padding: 2px;
+  width: min(500px,90vw);
+  border-radius: 5px 5px 0 0;
+  background-color: #0a8364;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.851);
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.user-control{
+  background-color: #545454b8;
+  padding: 5px;
+  margin: 2px;
+  border-radius: 100vw;
+  cursor: pointer;
+}
+
+.logout-btn{
+  background-color: blue;
+  font-weight: bold;
+  width: 100%;
+  color: white;
+  padding: 2px;
+  border-radius: 3px;
+}
