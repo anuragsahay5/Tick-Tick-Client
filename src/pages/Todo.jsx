@@ -5,8 +5,9 @@ import Todolist from "../components/Todolist";
 import Navbar from "../components/Navbar";
 import { SERVER_BASE_URL } from "../secret";
 
-export default function Todo() {
+export default function Todo({ val }) {
   const [todo_data, settodo_data] = useState([]);
+  const chng = 2;
   const navigate = useNavigate();
 
   async function handleAdd(e) {
@@ -32,12 +33,17 @@ export default function Todo() {
   }
 
   async function handleDelete(todoId) {
+
+    settodo_data(
+      todo_data.filter((val) => {
+        return val._id != todoId;
+      })
+    );
     try {
       let res = await axios.post(SERVER_BASE_URL + "/api/deleteTodo", {
         todoId,
         token: localStorage.getItem("auth-token"),
       });
-      loadTodos();
     } catch (error) {
       if (error.response.data.name === "JsonWebTokenError") {
         localStorage.clear();
@@ -100,7 +106,6 @@ export default function Todo() {
           </form>
           <div className="todo-lists">
             {todo_data.map((val, i, arr) => {
-              console.log(arr);
               return (
                 <Todolist
                   val={val}

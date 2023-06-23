@@ -11,6 +11,7 @@ export default function Register() {
   const emailElem = useRef();
   const userElem = useRef();
   const passElem = useRef();
+  const regbtn = useRef();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -23,6 +24,7 @@ export default function Register() {
       passElem.current.value = "";
       return toast.error("Invalid Credentils entered");
     }
+    regbtn.current.disabled=true;
       try {
         let result = await axios.post(SERVER_BASE_URL+"/api/register", {
           email: emailElem.current.value,
@@ -36,6 +38,7 @@ export default function Register() {
       } catch (error) {
         toast.error(error.response.data);
       }
+      regbtn.current.disabled=false;
       passElem.current.value = "";
   };
 
@@ -111,6 +114,7 @@ export default function Register() {
                   />
                 </div>
                 <button
+                  ref={regbtn}
                   type="submit"
                   className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >

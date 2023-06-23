@@ -7,20 +7,22 @@ import { SERVER_BASE_URL } from "../secret";
 export default function Login() {
   const emailElem = useRef();
   const passElem = useRef();
+  const signbtn = useRef();
 
   const navigate = useNavigate();
+
   const handleLogin = async (e) => {
     e.preventDefault();
     if (!emailElem.current.value || passElem.current.value.length < 6) {
       passElem.current.value = "";
       return toast.error("Invalid email or password ");
     }
+    signbtn.current.disabled=true;
     try {
       let result = await axios.post(SERVER_BASE_URL + "/api/login", {
         email: emailElem.current.value,
         password: passElem.current.value,
       });
-      console.log(result)
       localStorage.setItem("auth-token", result.data.token);
       localStorage.setItem("uname", result.data.username);
       toast.success("Login Successfull");
@@ -28,6 +30,7 @@ export default function Login() {
     } catch (error) {
       toast.error(error.response.data);
     }
+    signbtn.current.disabled=false;
     passElem.current.value = "";
   };
 
@@ -87,6 +90,7 @@ export default function Login() {
                   />
                 </div>
                 <button
+                  ref={signbtn}
                   type="submit"
                   className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
